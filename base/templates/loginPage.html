@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="{% static 'css/loginPage.css' %}">
+<meta charset="UTF-8">
+<title>Login Page</title>
+</head>
+<body>
+<div class="wrapper">
+  <div class="logo">
+  </div>
+  <div class="text-center mt-4 name">
+  </div>
+  <form class="p-3 mt-3" action="/doLogin" method="post">
+    {% csrf_token %}
+    <div class="container">
+      <div class="content">
+        <div class="banner">
+          <h1>MRI Consult</h1>
+          <h3>Student app</h3>
+          <h3>With patient volume continuing to grow throughout healthcare-and the steady stream of referrals coming your way-it can feel as 
+            if your work as a radiologist is never done. MRI consult is designed to reduce the workload by assisting in the analysis of radiographs.
+          </h3>
+        </div>
+        <div class="form" id="form">
+          <img src="https://i.pinimg.com/236x/4d/a8/bb/4da8bb993057c69a85b9b6f2775c9df2.jpg" alt="profile">
+          <p>Need an Account?
+            <a href="/sign_up" id="sign_up">Sign up</a>
+            <!-- <a href="#" id="sign_up">Sign up</a> -->
+          </p>
+          <input  id="email" type="email" autocomplete placeholder="Email">
+          <input type="password" placeholder="Password">
+          <button type="submit">Sign In</button>
+          <!-- <script src="static/js/sign_up.js"></script> -->
+
+          <div class="row">
+            {% if messages %}
+            <div class="col-12">
+              {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </form>
+</div>
+</body>
+</html>
