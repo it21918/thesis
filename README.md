@@ -3,7 +3,7 @@
 python3 -m venv myvenv
 source myvenv/bin/activate
 python3 -m pip install -r requirements.txt
-python3 manage.py runserver 8004
+python3 manage.py runserver 8000
 ```
 
 # Update the model
