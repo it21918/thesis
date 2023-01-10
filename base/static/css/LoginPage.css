@@ -6,7 +6,7 @@ body {
 	box-sizing: border-box;
 	height: 100vh;
 	overflow: hidden;
-	background: url("/static/images/MRI_Login_BackGround.webp")
+	background: url("/static/images/background2.jpg")
 		no-repeat center center;
 	background-size: cover;
 	backdrop-filter: blur(7px);
@@ -68,7 +68,7 @@ a {
 }
 
 a {
-	color: #1663be;
+	color: #006ce0;
 }
 #r {
 	position: absolute;
@@ -116,13 +116,21 @@ input:focus ~ input[type="email"]::placeholder {
 button {
 	width: 220px;
 	height: 38px;
-	border: 2px solid #142b54;
+	border: 2px solid #5d6066;
 	background: #142b54;
 	color: #fff;
 	cursor: pointer;
 	border-radius: 20px;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+	box-shadow: rgba(132, 183, 199, 0.25) 0px 13px 27px -5px,
 		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+		
+}
+
+button:hover {
+	background-color: #006ce0;
+	border: 2px solid #75a4d6;
+	box-shadow: rgba(90, 112, 145, 0.685) 0px 13px 27px -5px,
+		rgba(9, 206, 212, 0.849) 0px 8px 16px -8px;
 }
 
 button:active {
