@@ -1,0 +1,6 @@
+numpy
+opencv-python
+tqdm
+torchvision 
+wandb
+Django
