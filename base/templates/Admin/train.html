@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/train.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{% static '/js/train.js' %}"></script>
+    <script src="{% static '/js/sideNav.js' %}"></script>
+    <script src="{% static '/js/darkMode.js' %}"></script>
+    <script src="{% static '/js/pageLoad.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#selected").CreateMultiCheckBox({ width: '400px', defaultText: 'Select Below', height: '300px' });
+        });
+        $(document).ready(function () {
+            $("#reported").CreateMultiCheckBox({ width: '400px', defaultText: 'Select Below', height: '300px' });
+        });
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutliple Upload</title>
+</head>
+
+<body>
+    <script>
+        var app = document.getElementsByTagName("BODY")[0];
+        if (localStorage.lightMode == "dark") {
+            app.setAttribute("light-mode", "dark");
+        }
+    </script>
+    <!-- sideBar -->
+    <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger"></div>
+        <ul class="links">
+            <li class="link">
+                <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" color="white"
+                    fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path
+                        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                </svg>
+                <a href="/adminHome">
+                    <span class="icon">Home</span>
+                </a>
+            </li>
+            <li class="link">
+                <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25"
+                    fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
+                    <path
+                        d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
+                </svg>
+                <a href="/evaluateModel">
+                    <span class="icon">Evaluate Model</span>
+                </a>
+            </li>
+            <li class="link active">
+                <svg tabindex="0" color="white" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                    fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                    <path
+                        d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                    <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                    <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
+                <a href="/trainModel">
+                    <span class="icon">Train Model</span>
+                </a>
+            </li>
+            <li class="link">
+                <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25"
+                    fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                    <path
+                        d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+                </svg>
+                <a href="/modifyDoctors">
+                    <span class="icon">Users</span>
+                </a>
+            </li>
+            <li class="link">
+                <svg tabindex="0" color="white" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                    fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                    <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                    <path
+                        d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
+                </svg>
+                <a href="/modifyImages">
+                    <span class="icon">Modify Images</span>
+                </a>
+            </li>
+            <li class="link">
+                <svg xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25" fill="currentColor"
+                    class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                    <path fill-rule="evenodd"
+                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                </svg>
+                <a href="/">
+                    <span class="icon">Logout</span>
+                </a>
+            </li>
+            <li style="position: absolute;bottom:0; height: 150px;">
+                <button class="light-mode-button" aria-label="Toggle Light Mode" onclick="toggle_light_mode()">
+                    <span></span>
+                    <span></span>
+                </button>
+            </li>
+        </ul>
+        </div>
+    </nav>
+    </div>
+    <!-- end of sideBar -->
+
+    <div tabindex="1" class="container" style="position: relative; left: 30%;">
+        <div id="notebooks">
+            <input type="text" id="query"/>
+            <select id="orderList">
+              <option value="name">By name</option>
+              <option value="-created_at">Newest</option>
+              <option value="created_at">Oldest</option>
+            </select>
+            <ul id="notebook_ul">
+              {% for run in runs %}
+              <li>
+                <a href="{% url 'run_detail' run.id %}">{{run.name}}</a><br/>
+                <div class="right top">{{run.created_at}}</div>
+              </li>
+              {% endfor %}
+            </ul>
+            <span>Number of runs: {{runCount}}</span>
+          </div>
+        
+        <script>
+            function search() {
+                // Declare variables
+                let query, notebooks, notebooksList, li, i, txtValue;
+                query = document.getElementById("query").value.toUpperCase();
+                notebooks = document.getElementById("notebook_ul");
+                notebooksList = notebooks.getElementsByTagName("li");
+        
+                // Loop through all list items, and hide those who don't match the search query
+                for (i = 0; i < notebooksList.length; i++) {
+                    li = notebooksList[i];
+                    txtValue = li.textContent || li.innerText;
+                    if (txtValue.toUpperCase().indexOf(query) > -1) {
+                        li.style.display = "";
+                    } else {
+                        li.style.display = "none";
+                    }
+                }
+            }
+        
+            function sort() {
+                let orderList = document.getElementById("orderList");
+                let notebooksList = document.getElementById("notebook_ul");
+                let notebooks = notebooksList.getElementsByClassName("notebook");
+                let notebooksArray = Array.from(notebooks);
+        
+                notebooksArray.sort(function (a, b) {
+                    if (orderList.value === "name") {
+                        let nameA = a.innerText.toUpperCase();
+                        let nameB = b.innerText.toUpperCase();
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+                        return 0;
+                    } else {
+                        let dateA = new Date(a.querySelector(".right.top").innerText);
+                        let dateB = new Date(b.querySelector(".right.top").innerText);
+                        return orderList.value === "-created_at" ? dateB - dateA : dateA - dateB;
+                    }
+                });
+        
+                for (let i = 0; i < notebooksArray.length; i++) {
+                    notebooksList.appendChild(notebooksArray[i]);
+                }
+            }
+        
+            document.getElementById("query").addEventListener("keyup", search);
+            document.getElementById("orderList").addEventListener("change", sort);
+        </script>
+  <br>
+
+        
+        <div class="" style="position:relative; padding-top: 300px;">
+            <div class="face face1" >
+                <div class="content">
+                    <h3>Select images</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <form method="post" id="selectedForm" action="/train_selected">
+                        {% csrf_token %}
+                        <label for="selected">There are available {{trainImgCount}} images for training. Select:</label>
+                        <select id="selected" name="selected">
+                            {% for image in trainImages %}
+                            <option value="{{ image.id }}">{{ image.images.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <label for="reported">There are available {{reportImgCount}} reports for training. Select:</label>
+                        <select id="reported" name="reported">
+                            {% for report in reportImages %}
+                            <option value="{{ report.id }}">{{ report.images.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <a href="javascript:{}" onclick="document.getElementById('selectedForm').submit();">Select the
+                            images that you want to choose in the training process.
+                        </a>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="" style=" padding-top: 300px;">
+            <div class="face face1">
+                <div class="content">
+                    <h3>Random images</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <label for="random">There are available {{trainImgCount}} images for training. Selected number of
+                        images:</label><input value="1" id="random" name="random" type="number" max="{{trainImgCount}}"
+                        min="1">
+                    <a href="#">Let us choose the training images.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

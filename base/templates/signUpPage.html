@@ -1,52 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<link rel="stylesheet" href="{% static 'css/SignUpPage.css' %}">
-<meta charset="UTF-8">
-<title>Login Page</title>
-</head>
-<body>
-<div class="wrapper">
-  <div class="logo">
-  </div>
-  <div class="text-center mt-4 name">
-  </div>
-  <form class="p-3 mt-3" action="/doSignUp" method="post">
-    {% csrf_token %}
-    <div class="container">
-      <div class="content">
-        <div class="banner">
-            <p>You have already an account?
-                <a href="/" id="sign_up">Login</a>
-            </p>
-          </div>
-        <div class="form" id="form">
-            <h1>Sign up</h1>
-            <br>
-            <input  id="username" type="text"  placeholder="Username">
-            <input  id="lastname" type="text"  placeholder="Lastname">
-            <input  id="birthday" type="date"  placeholder="Birthday">
-            <input  id="email" type="email"  placeholder="Email">
-            <input type="password" placeholder="Password">
-
-          <button type="submit">Sign Up</button>
-          <div class="row">
-            {% if messages %}
-            <div class="col-12">
-              {% for message in messages %}
-              {% if message.tags == 'error' %}
-              <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
-              {% endif %}
-              {% endfor %}
+  <head>
+    <link rel="stylesheet" href="{% static 'css/SignUpPage.css' %}">
+    <meta charset="UTF-8">
+    <title>Sign up Page</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="logo"></div>
+      <div class="text-center mt-4 name"></div>
+      <form class="p-3 mt-3" action="/doSignUp" method="post"> {% csrf_token %} <div class="container">
+          <div class="content">
+            <div class="banner">
+              <p>You have already an account? <a href="/" id="sign_up">Login</a>
+              </p>
             </div>
-            {% endif %}
+            <div class="form" id="form">
+              <h1>Sign up</h1>
+              <br>
+              <input name='username' id="username" type="text" placeholder="Username" required>
+              <input name="lastname" id="lastname" type="text" placeholder="Lastname" required>
+              <input name="birthday" data-date-format="YYYY-MM-DD" id="birthday" type="date" placeholder="Birthday" required>
+              <input name="email" id="email" type="email" placeholder="Email" required>
+              <input name="password" type="password" placeholder="Password" required>
+              <input name="role" type="hidden" placeholder="Role" value="2">
+              <button type="submit">Sign Up</button>
+              <div class="row"> {% if messages %} <div class="col-12"> {% for message in messages %} {% if message.tags == 'error' %} <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div> {% endif %} {% endfor %} </div> {% endif %} </div>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
-  </form>
-  </form>
-</div>
-</body>
+  </body>
 </html>

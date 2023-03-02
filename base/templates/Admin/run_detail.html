@@ -1,0 +1,64 @@
+{% block content %}
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Run Detail</h1>
+        <table class="table table-striped">
+          <tr>
+            <th>Run ID</th>
+            <td>{{ run.id }}</td>
+          </tr>
+          <tr>
+            <th>Project</th>
+            <td>{{ run.project }}</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>{{ run.name }}</td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>{{ run.state }}</td>
+          </tr>
+          <tr>
+            <th>Started</th>
+            <td>{{ run.start_time }}</td>
+          </tr>
+          <tr>
+            <th>Finished</th>
+            <td>{{ run.end_time }}</td>
+          </tr>
+          <tr>
+            <th>Duration</th>
+            <td>{{ run.duration }}</td>
+          </tr>
+        </table>
+
+        <h2>Summary</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>Metric</th>
+            <th>Value</th>
+          </tr>
+          {% for key, value in data.items %}
+            <tr>
+              <td>{{ key.epoch }}</td>
+              <td>{{ value }}</td>
+            </tr>
+          {% endfor %}
+          {% for c in charts %}
+          <tr>
+            <td>{{ c.epoch }}</td>
+            <td>{{ c.step }}</td>
+            <td>{{ c }}</td>
+          </tr>
+        {% endfor %}
+        </table>
+      </div>
+
+
+
+  </div>
+
+{% endblock %}

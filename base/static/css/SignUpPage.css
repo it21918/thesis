@@ -6,14 +6,13 @@ body {
 	box-sizing: border-box;
 	height: 100vh;
 	overflow: hidden;
-	background: url("/static/images/MRI_Login_BackGround.webp")
-		no-repeat center center;
+	background: url("/static/images/background2.jpg") no-repeat center center;
 	background-size: cover;
 	backdrop-filter: blur(7px);
 }
 
 * {
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
 	font-weight: bold;
 	color: #363636;
@@ -38,7 +37,7 @@ body {
 	width: 350px;
 	background: rgb(0, 0, 0, 0.4);
 	border-radius: 20px 0 0 20px;
-    
+
 }
 
 .banner * {
@@ -57,13 +56,15 @@ body {
 	position: relative;
 }
 
-.banner a,p {
+.banner a,
+p {
 	font-size: small;
 }
 
 .banner a {
 	color: rgb(187, 178, 178);
 }
+
 #r {
 	position: absolute;
 	bottom: 20px;
@@ -98,7 +99,7 @@ input:focus {
 	left: 10px;
 }
 
-input:focus ~ input[type="email"]::placeholder {
+input:focus~input[type="email"]::placeholder {
 	color: black;
 	position: absolute;
 	top: 7px;
@@ -121,6 +122,14 @@ button {
 		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
+button:hover {
+	background-color: #006ce0;
+	border: 2px solid #7c9ad1;
+	box-shadow: rgba(90, 112, 145, 0.685) 0px 13px 27px -5px,
+		rgba(9, 206, 212, 0.849) 0px 8px 16px -8px;
+}
+
+
 button:active {
 	transform: scale(1.05);
 	box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
@@ -130,6 +139,7 @@ button:active {
 	.banner {
 		display: none;
 	}
+
 	.content {
 		display: flex;
 		justify-content: center;

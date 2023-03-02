@@ -1,0 +1,333 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Admin Base</title>
+  </head>
+  <body>
+    <script>
+      var app = document.getElementsByTagName("BODY")[0];
+      if (localStorage.lightMode == "dark") {
+        app.setAttribute("light-mode", "dark");
+      }
+    </script>
+      <!-- sideBar -->
+      <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger"></div>
+        <ul class="links">
+          <li class="link">
+            <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" color="white" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+            </svg>
+            <a href="/doctorHome" >
+              <span class="icon">Home</span>
+            </a>
+          </li>
+          <li class="link">
+            <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+              <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+            </svg>
+            <a href="/Patients">
+              <span class="icon">Users</span>
+            </a>
+          </li>
+          <li class="link ">
+            <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+            </svg>
+            <a href="/Segmentation">
+              <span class="icon">Segmentation</span>
+            </a>
+          </li>
+          <li class="link">
+            <svg xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+              <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+            </svg>
+            <a href="/">
+              <span class="icon">Logout</span>
+            </a>
+          </li>
+          <li style="position: absolute;bottom:0; height: 150px;">
+            <button class="light-mode-button" aria-label="Toggle Light Mode" onclick="toggle_light_mode()">
+              <span></span>
+              <span></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      </nav>
+    </div>
+    <!-- end of sideBar -->
+
+
+
+    <!-- Put content in center -->     
+<div class="container" style="width: 900px; height: 100%; position: absolute; left: 30%; align-items: center;">
+      <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>      
+<h1>Train Results</h1>
+      <table id="train-results-table">
+          <thead>
+              <tr>
+                  <th>Step</th>
+                  <th>Train Loss</th>
+                  <th>Validation IOU</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for log in logs %}
+              <tr>
+                  <td>{{ log.step }}</td>
+                  <td>{{ log.train_loss }}</td>
+                  <td>{{ log.validation_Iou }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+
+      <h1>Train Loss and Validation IOU Chart</h1>
+    
+      <div id="chart-container">
+        <canvas id="train-loss-chart"></canvas>
+        <canvas id="validation-iou-chart"></canvas>
+      </div>
+    
+      <script>
+        var trainLossData = {{ train_loss_json|safe }};
+        var validationIouData = {{ validation_iou_json|safe }};
+      
+        var ctxTrain = document.getElementById('train-loss-chart').getContext('2d');
+        var trainLossChart = new Chart(ctxTrain, {
+          type: 'line',
+          data: {
+            datasets: [{
+              label: 'Train Loss',
+              data: trainLossData,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              xAxes: [{
+                type: 'linear',
+                position: 'bottom',
+                ticks: {
+                  stepSize: 1
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Step'
+                }
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Train Loss'
+                }
+              }]
+            },
+            title: {
+              display: true,
+              text: 'Train Loss Chart'
+            },
+            legend: {
+              display: true,
+              position: 'bottom'
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  label += tooltipItem.yLabel.toFixed(2);
+                  return label;
+                }
+              }
+            },
+            plugins: {
+              zoom: {
+                pan: {
+                  enabled: true,
+                  mode: 'x'
+                },
+                zoom: {
+                  enabled: true,
+                  mode: 'x',
+                  speed: 0.05
+                }
+              }
+            }
+          }
+        });
+    
+        var ctxValidation = document.getElementById('validation-iou-chart').getContext('2d');
+        var validationIouChart = new Chart(ctxValidation, {
+          type: 'line',
+          data: {
+            datasets: [{
+              label: 'Validation IOU',
+              data: validationIouData,
+              backgroundColor: 'rgba(255, 159, 64, 0.2)',
+              borderColor: 'rgba(255, 159, 64, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              xAxes: [{
+                type: 'linear',
+                position: 'bottom',
+                ticks: {
+                  stepSize: 1
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Step'
+                }
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Validation Iou'
+                }
+              }]
+            },
+            title: {
+              display: true,
+              text: 'Validation Iou Chart'
+            },
+            legend: {
+              display: true,
+              position: 'bottom'
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  label += tooltipItem.yLabel.toFixed(2);
+                  return label;
+                }
+              }
+            },
+            plugins: {
+              zoom: {
+                pan: {
+                  enabled: true,
+                  mode: 'x'
+                },
+                zoom: {
+                  enabled: true,
+                  mode: 'x',
+                  speed: 0.05
+                }
+              }
+            }
+          }
+        });
+
+        // Create the combined chart
+var ctxCombined = document.getElementById('combined-chart').getContext('2d');
+var combinedChart = new Chart(ctxCombined, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            label: 'Train Loss',
+            data: trainLossData,
+            borderColor: 'rgb(75, 192, 192)',
+            fill: false,
+          },
+          {
+            label: 'Validation IOU',
+            data: validationIouData,
+            borderColor: 'rgb(255, 99, 132)',
+            fill: false,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Combined Chart'
+        },
+        legend: {
+          display: true,
+          position: 'bottom'
+        },
+        scales: {
+          xAxes: [{
+            type: 'linear',
+            position: 'bottom',
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          enabled: true,
+          mode: 'xy'
+        }
+      }
+    });
+    </script>
+
+<h1>True & Predict images</h1>
+{% if img_list %}
+  <div class="image-grid">
+    <table id="image-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>True Image</th>
+          <th>Predicted Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for img, true, pred in img_list %}
+          <tr>
+            <td><img style="height: 200px; width: 200px;" src="{{img}}" alt="-"></td>
+            <td><img style="height: 200px; width: 200px;" src="{{true}}" alt="-"></td>
+            <td><img style="height: 200px; width: 200px;" src="{{pred}}" alt="-"></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p>No images found.</p>
+{% endif %}
+    
+    <script src="static/js/darkMode.js"></script>
+    <script src="static/js/sideNav.js"></script>
+    <script src="static/js/trainResults.js"></script>
+  </body>
+</html>
